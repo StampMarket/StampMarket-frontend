@@ -1,0 +1,214 @@
+<script setup>
+import {ref} from 'vue';
+import {NCarousel, NCarouselItem, NDivider} from 'naive-ui';
+
+const currentSlide = ref(0);
+const siteTitle = ref('Stamp Collection Store');
+const navLinks = ref([
+  {text: 'Home'},
+  {text: 'Categories'},
+  {text: 'About'},
+  {text: 'Contact'}
+]);
+const topSellingStamps = ref([
+  {
+    name: 'Vintage Stamp',
+    description: 'A classic addition to any collection.',
+    imageUrl: 'https://source.unsplash.com/300x300/?stamp'
+  },
+  {
+    name: 'Rare Postage Stamp',
+    description: 'A rare find for enthusiasts.',
+    imageUrl: 'https://source.unsplash.com/300x300/?postage'
+  },
+  {
+    name: 'Philately Special',
+    description: 'For those who appreciate the finer details.',
+    imageUrl: 'https://source.unsplash.com/300x300/?philately'
+  }
+]);
+
+const featuredStamps = ref([
+  {
+    name: 'Vintage Stamp',
+    description: 'A classic addition to any collection.',
+    imageUrl: 'https://source.unsplash.com/300x300/?stamp'
+  },
+  {
+    name: 'Rare Postage Stamp',
+    description: 'A rare find for enthusiasts.',
+    imageUrl: 'https://source.unsplash.com/300x300/?postage'
+  },
+  {
+    name: 'Philately Special',
+    description: 'For those who appreciate the finer details.',
+    imageUrl: 'https://source.unsplash.com/300x300/?philately'
+  },
+  {
+    name: 'Vintage Stamp',
+    description: 'A classic addition to any collection.',
+    imageUrl: 'https://source.unsplash.com/300x300/?stamp'
+  },
+  {
+    name: 'Rare Postage Stamp',
+    description: 'A rare find for enthusiasts.',
+    imageUrl: 'https://source.unsplash.com/300x300/?postage'
+  }
+]);
+
+const nextSlide = () => {
+  if (currentSlide.value < featuredStamps.value.length - 1) {
+    currentSlide.value++;
+  } else {
+    currentSlide.value = 0;
+  }
+};
+
+const prevSlide = () => {
+  if (currentSlide.value > 0) {
+    currentSlide.value--;
+  } else {
+    currentSlide.value = featuredStamps.value.length - 1;
+  }
+};
+</script>
+
+<template>
+  <header class="sticky top-0 w-full bg-gray-800 text-white p-4 z-50">
+    <div class="container flex justify-between items-center">
+      <h1 class="text-3xl align-middle">{{ siteTitle }}</h1>
+      <nav>
+        <ul class="flex space-x-4">
+          <li v-for="link in navLinks" :key="link.text">
+            <a href="#" class="hover:text-gray-300">{{ link.text }}</a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+  <main class="px-4">
+    <section class="py-8">
+      <div class="container mx-auto bg-opacity-80 bg-white p-6 stamp-border">
+        <h2 class="text-2xl font-bold mb-4">Featured Stamps</h2>
+        <n-divider />
+        <div class="relative overflow-hidden">
+          <n-carousel
+              effect="card"
+              prev-slide-style="transform: translateX(-150%) translateZ(-800px);"
+              next-slide-style="transform: translateX(50%) translateZ(-800px);"
+              style="height: 240px"
+              :show-dots="true"
+          >
+            <n-carousel-item :style="{ width: '35%' }">
+              <img
+                  class="carousel-img"
+                  src="https://naive-ui.oss-cn-beijing.aliyuncs.com/carousel-img/carousel1.jpeg"
+              >
+            </n-carousel-item>
+            <n-carousel-item :style="{ width: '35%' }">
+              <img
+                  class="carousel-img"
+                  src="https://naive-ui.oss-cn-beijing.aliyuncs.com/carousel-img/carousel2.jpeg"
+              >
+            </n-carousel-item>
+            <n-carousel-item :style="{ width: '35%' }">
+              <img
+                  class="carousel-img"
+                  src="https://naive-ui.oss-cn-beijing.aliyuncs.com/carousel-img/carousel3.jpeg"
+              >
+            </n-carousel-item>
+            <n-carousel-item :style="{ width: '35%' }">
+              <img
+                  class="carousel-img"
+                  src="https://naive-ui.oss-cn-beijing.aliyuncs.com/carousel-img/carousel4.jpeg"
+              >
+            </n-carousel-item>
+          </n-carousel>
+        </div>
+      </div>
+    </section>
+    <section class="py-8">
+      <div class="container mx-auto bg-opacity-80 bg-white p-6 stamp-border">
+        <h2 class="text-2xl font-bold mb-4">Top Selling Stamps</h2>
+        <n-divider />
+        <div class="grid grid-cols-3 gap-4">
+          <div v-for="stamp in topSellingStamps" :key="stamp.name"
+               class="bg-white shadow-lg rounded-lg overflow-hidden stamp-border">
+            <img :src="stamp.imageUrl" :alt="stamp.name" class="w-full h-64 object-cover">
+            <div class="p-4">
+              <h3 class="font-bold">{{ stamp.name }}</h3>
+              <p class="text-gray-700">{{ stamp.description }}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="py-8">
+      <div class="container mx-auto bg-opacity-80 bg-white p-6 stamp-border">
+        <h2 class="text-2xl font-bold mb-4">Top Selling Stamps</h2>
+        <div class="grid grid-cols-3 gap-4">
+          <div v-for="stamp in topSellingStamps" :key="stamp.name"
+               class="bg-white shadow-lg rounded-lg overflow-hidden stamp-border">
+            <img :src="stamp.imageUrl" :alt="stamp.name" class="w-full h-64 object-cover">
+            <div class="p-4">
+              <h3 class="font-bold">{{ stamp.name }}</h3>
+              <p class="text-gray-700">{{ stamp.description }}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="py-8">
+      <div class="container mx-auto bg-opacity-80 bg-white p-6 stamp-border">
+        <h2 class="text-2xl font-bold mb-4">Top Selling Stamps</h2>
+        <div class="grid grid-cols-3 gap-4">
+          <div v-for="stamp in topSellingStamps" :key="stamp.name"
+               class="bg-white shadow-lg rounded-lg overflow-hidden stamp-border">
+            <img :src="stamp.imageUrl" :alt="stamp.name" class="w-full h-64 object-cover">
+            <div class="p-4">
+              <h3 class="font-bold">{{ stamp.name }}</h3>
+              <p class="text-gray-700">{{ stamp.description }}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="py-8">
+      <div class="container mx-auto bg-opacity-80 bg-white p-6 stamp-border">
+        <h2 class="text-2xl font-bold mb-4">Top Selling Stamps</h2>
+        <div class="grid grid-cols-3 gap-4">
+          <div v-for="stamp in topSellingStamps" :key="stamp.name"
+               class="bg-white shadow-lg rounded-lg overflow-hidden stamp-border">
+            <img :src="stamp.imageUrl" :alt="stamp.name" class="w-full h-64 object-cover">
+            <div class="p-4">
+              <h3 class="font-bold">{{ stamp.name }}</h3>
+              <p class="text-gray-700">{{ stamp.description }}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+  <footer class="bottom-0 w-full bg-gray-800 text-white text-center py-4">
+    <p>&copy; 2023 Stamp Collection Store</p>
+  </footer>
+</template>
+
+<style scoped>
+
+.stamp-border {
+  border: 1px dashed black;
+  padding: 10px;
+}
+
+.stamp-font {
+  font-family: 'Courier New', Courier, monospace;
+}
+
+.carousel-img {
+  margin: 0 auto;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+</style>

@@ -1,8 +1,12 @@
 import { createRouter, createWebHashHistory, createWebHistory } from "vue-router";
 
-const routes = createRouter({
+const router = createRouter({
     history: createWebHistory(),
     routes: [
+        {
+            path: '/',
+            component: () => import('../views/Landing.vue')
+        }
 
     ]
 })
@@ -12,14 +16,14 @@ function forbiddenRoute(next) {
     next('/login')
 }
 
-routes.beforeEach((to, from, next) => {
-    const isLogin = localStorage.getItem('token') ? true : false;
-    if (to.path == '/login') {
-        next();
-    } else {
-        isLogin ? next() : forbiddenRoute(next);
-    }
-})
+// router.beforeEach((to, from, next) => {
+//     const isLogin = localStorage.getItem('token') ? true : false;
+//     if (to.path == '/login') {
+//         next();
+//     } else {
+//         isLogin ? next() : forbiddenRoute(next);
+//     }
+// })
 
 
 
