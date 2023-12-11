@@ -5,7 +5,31 @@ const router = createRouter({
     routes: [
         {
             path: '/',
-            component: () => import('../views/Landing.vue')
+            component: () => import('../layout/Layout.vue'),
+            children: [
+                {
+                    path: '',
+                    name: 'Home',
+                    component: () => import('../views/Landing.vue'),
+                    meta: {
+                        title: 'Landing'
+                    }
+                },
+                {
+                    path: '/order',
+                    name: 'Order',
+                    component: () => import('../views/Order.vue'),
+                    meta: {
+                        title: 'Order',
+                        requiresAuth: true
+
+                    }
+                }
+            ]
+        },
+        {
+            path: '/Home',
+            redirect: '/'
         }
 
     ]

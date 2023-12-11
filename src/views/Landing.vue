@@ -3,13 +3,7 @@ import {ref} from 'vue';
 import {NCarousel, NCarouselItem, NDivider} from 'naive-ui';
 
 const currentSlide = ref(0);
-const siteTitle = ref('Stamp Collection Store');
-const navLinks = ref([
-  {text: 'Home'},
-  {text: 'Categories'},
-  {text: 'About'},
-  {text: 'Contact'}
-]);
+
 const topSellingStamps = ref([
   {
     name: 'Vintage Stamp',
@@ -74,18 +68,6 @@ const prevSlide = () => {
 </script>
 
 <template>
-  <header class="sticky top-0 w-full bg-gray-800 text-white p-4 z-50">
-    <div class="container flex justify-between items-center">
-      <h1 class="text-3xl align-middle">{{ siteTitle }}</h1>
-      <nav>
-        <ul class="flex space-x-4">
-          <li v-for="link in navLinks" :key="link.text">
-            <a href="#" class="hover:text-gray-300">{{ link.text }}</a>
-          </li>
-        </ul>
-      </nav>
-    </div>
-  </header>
   <main class="px-4">
     <section class="py-8">
       <div class="container mx-auto bg-opacity-80 bg-white p-6 stamp-border">
@@ -189,9 +171,6 @@ const prevSlide = () => {
       </div>
     </section>
   </main>
-  <footer class="bottom-0 w-full bg-gray-800 text-white text-center py-4">
-    <p>&copy; 2023 Stamp Collection Store</p>
-  </footer>
 </template>
 
 <style scoped>
