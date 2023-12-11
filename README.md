@@ -2,6 +2,10 @@
 
 This is the frontend repository for the StampMarket project. StampMarket is a web application built with Vue.js and Vite.
 
+## Live Preview
+The site is host on vercel.  
+To preview, visit https://stamp-market-frontend.vercel.app/
+
 ## Project setup
 To run this project locally, follow these steps:
 
