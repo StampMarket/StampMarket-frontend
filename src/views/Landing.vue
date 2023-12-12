@@ -125,51 +125,6 @@ const prevSlide = () => {
         </div>
       </div>
     </section>
-    <section class="py-8">
-      <div class="container mx-auto bg-opacity-80 bg-white p-6 stamp-border">
-        <h2 class="text-2xl font-bold mb-4">Top Selling Stamps</h2>
-        <div class="grid grid-cols-3 gap-4">
-          <div v-for="stamp in topSellingStamps" :key="stamp.name"
-               class="bg-white shadow-lg rounded-lg overflow-hidden stamp-border">
-            <img :src="stamp.imageUrl" :alt="stamp.name" class="w-full h-64 object-cover">
-            <div class="p-4">
-              <h3 class="font-bold">{{ stamp.name }}</h3>
-              <p class="text-gray-700">{{ stamp.description }}</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-    <section class="py-8">
-      <div class="container mx-auto bg-opacity-80 bg-white p-6 stamp-border">
-        <h2 class="text-2xl font-bold mb-4">Top Selling Stamps</h2>
-        <div class="grid grid-cols-3 gap-4">
-          <div v-for="stamp in topSellingStamps" :key="stamp.name"
-               class="bg-white shadow-lg rounded-lg overflow-hidden stamp-border">
-            <img :src="stamp.imageUrl" :alt="stamp.name" class="w-full h-64 object-cover">
-            <div class="p-4">
-              <h3 class="font-bold">{{ stamp.name }}</h3>
-              <p class="text-gray-700">{{ stamp.description }}</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-    <section class="py-8">
-      <div class="container mx-auto bg-opacity-80 bg-white p-6 stamp-border">
-        <h2 class="text-2xl font-bold mb-4">Top Selling Stamps</h2>
-        <div class="grid grid-cols-3 gap-4">
-          <div v-for="stamp in topSellingStamps" :key="stamp.name"
-               class="bg-white shadow-lg rounded-lg overflow-hidden stamp-border">
-            <img :src="stamp.imageUrl" :alt="stamp.name" class="w-full h-64 object-cover">
-            <div class="p-4">
-              <h3 class="font-bold">{{ stamp.name }}</h3>
-              <p class="text-gray-700">{{ stamp.description }}</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
   </main>
 </template>
 

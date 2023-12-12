@@ -1,4 +1,4 @@
-import { createRouter, createWebHashHistory, createWebHistory } from "vue-router";
+import { createRouter, createWebHistory } from "vue-router";
 
 const router = createRouter({
     history: createWebHistory(),
@@ -30,8 +30,30 @@ const router = createRouter({
         {
             path: '/Home',
             redirect: '/'
+        },
+        // {
+        //     path: '/',
+        //     name: 'Layout',
+        //     redirect: '/Dashboard',
+        //     component: () => import('../layout/Layout.vue'),
+        //     children: [
+        //         {
+        //             path: '/Dashboard',
+        //             name: 'Dashboard',
+        //             component: () => import('../views/Labs.vue')
+        //         }
+        //     ]
+        // },
+        // {
+        //     path: '/login',
+        //     name: 'Login',
+        //     component: () => import('../views/Login.vue')
+        // },
+        {
+            path:'/:pathMatch(.*)*',
+            name:'NotFound',
+            component: () => import('../views/Error.vue')
         }
-
     ]
 })
 
