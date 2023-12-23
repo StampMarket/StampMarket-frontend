@@ -6,7 +6,7 @@ export const MainStore = defineStore("main", {
         isLogin: false,
         userName: "",
         token: "",
-        userId: "",
+        userID: 0,
         password: "",
         balance: 0,
     }),

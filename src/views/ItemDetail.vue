@@ -34,17 +34,42 @@ const submitCallback = () => {
 }
 
 function purchase() {
-  //TODO: add purchase logic
-  // service.get(api.createOrder).data({
-  //   userID: '1',
-  //   stampID: stampData.value.id,
-  //   count: 1,
-  //   password: store.password
-  // }).then((res) => {
-  //   if (res.data.status === 'success') {
-  //     showModal.value = true
-  //   }
-  // })
+  // TODO: 购买
+  if (!store.isLogin) {
+    router.push('/login')
+    return
+  }
+
+  if (store.balance < stampData.value.price) {
+    alert('余额不足')
+    return
+  }
+
+  // 创建订单
+  service.put(api.createOrder,{
+    userId: store.userID,
+    stampId: stampData.value.id,
+    count: 1,
+    password: store.password
+  }).then((res) => {
+    if (res.data.status === 'success') {
+      showModal.value = true
+    }
+  }).catch((err) => {
+    console.log(err)
+    alert('购买失败')
+  })
+
+  // 扣除余额
+  service.put(api.deduct,{
+    id: store.userID,
+    amount: stampData.value.price * 100,
+    password: store.password
+  }).then((res) => {
+    if (res.data.status === 'success') {
+      showModal.value = true
+    }
+  })
   showModal.value = true
 }
 

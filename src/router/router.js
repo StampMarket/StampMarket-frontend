@@ -8,7 +8,7 @@ const router = createRouter({
             component: () => import('../layout/Layout.vue'),
             children: [
                 {
-                    path: '',
+                    path: '/',
                     name: 'Home',
                     component: () => import('../views/Landing.vue'),
                     meta: {
@@ -41,7 +41,7 @@ const router = createRouter({
             ]
         },
         {
-            path: '/Home',
+            path: '/home',
             redirect: '/'
         },
         {

@@ -23,13 +23,8 @@ const store = MainStore()
 // request拦截器
 service.interceptors.request.use(
     config => {
+        config.headers['Authorization'] = store.token
         // do something before request is sent
-        if (store.token) {
-        // let each request carry token
-        // ['X-Token'] is a custom headers key
-        // please modify it according to the actual situation
-            config.headers['Authorization'] = 'Bearer ' + store.token
-        }
         return config
     },
     error => {
