@@ -26,7 +26,7 @@ const router = createRouter({
                     }
                 },
                 {
-                    path: '/item',
+                    path: '/item/:id',
                     name: 'itemDetail',
                     component: () => import('../views/ItemDetail.vue'),
                     meta: {

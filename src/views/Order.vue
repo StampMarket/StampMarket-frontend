@@ -1,6 +1,8 @@
 <script setup>
 import {NButton, NDataTable, NTag, useMessage} from "naive-ui";
-import {h, ref} from "vue";
+import {h, onMounted, ref} from "vue";
+import service from "../utils/request.js";
+import api from "../utils/api.js";
 
 const columns = ref([
   {
@@ -78,6 +80,14 @@ const orderData = ref([
     tags: ["cool", "teacher"]
   }
 ])
+
+onMounted(() => {
+  service.get(api.getOrderList).then((res) => {
+    orderData.value = res.data.data
+    console.log(orderData)
+  });
+})
+
 </script>
 
 <template>

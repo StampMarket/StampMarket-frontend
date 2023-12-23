@@ -30,7 +30,7 @@ const topupCount = ref(0);
             <span>余额：</span>
             <span>{{balance}}</span>
           </div>
-          <div class="flex justify-between my-1">
+          <div class="flex justify-center my-1">
             <n-popselect v-model:value="value" :options="[{label:'确认', value:''}]" trigger="click">
               <n-button>充值</n-button>
               <template #empty>
@@ -40,9 +40,6 @@ const topupCount = ref(0);
                 <n-input-number v-model:value="topupCount" clearable :precision="2" />
               </template>
             </n-popselect>
-
-
-            <n-button>修改信息</n-button>
           </div>
         </div>
       </n-card-body>

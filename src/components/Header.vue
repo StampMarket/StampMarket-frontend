@@ -7,9 +7,7 @@ const router = useRouter();
 
 const siteTitle = 'Stamp Collection Store';
 const navLinks = ref([
-  {text: 'Home',
-    onClick: () => router.push('/')
-  },
+  {text: 'Home'},
   {text: 'Order'},
   {text: 'Me'},
 ]);
@@ -22,7 +20,7 @@ const navLinks = ref([
       <nav>
         <ul class="flex space-x-4">
           <li v-for="link in navLinks" :key="link.text">
-            <a href="#" class="hover:text-gray-300 text-xl font-medium" @click="router.push(link.text)">{{ link.text }}</a>
+            <a href="#" class="hover:text-gray-300 text-xl font-medium" @click="router.push('/' + link.text)">{{ link.text }}</a>
           </li>
         </ul>
       </nav>
