@@ -24,12 +24,33 @@ const router = createRouter({
                         requiresAuth: true
 
                     }
-                }
+                },
+                {
+                    path: '/item',
+                    name: 'itemDetail',
+                    component: () => import('../views/ItemDetail.vue'),
+                    meta: {
+                        title: 'Item Detail',
+                        requiresAuth: false
+                    }
+                },
+                {
+                    path: '/me',
+                    name: 'Me',
+                    component: () => import('../views/Me.vue'),}
             ]
         },
         {
             path: '/Home',
             redirect: '/'
+        },
+        {
+            path: '/login',
+            name: 'Login',
+            component: () => import('../views/Login.vue'),
+            meta: {
+                title: 'Login'
+            }
         },
         // {
         //     path: '/',

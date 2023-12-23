@@ -2,32 +2,42 @@
 
 import axios from 'axios'
 import { Message } from 'element-ui'
-import store from '@/store'
+import { MainStore } from '../store/store.js'
 import { getToken } from '@/utils/auth'
+
+export const baseURL = 'http://localhost:8080'
+export const CONTENT_TYPE = 'Content-Type'
+
+export const FORM_URLENCODED = 'application/x-www-form-urlencoded; charset=UTF-8'
+
+export const APPLICATION_JSON = 'application/json; charset=UTF-8'
+
+export const TEXT_PLAIN = 'text/plain; charset=UTF-8'
 
 // 创建axios实例
 const service = axios.create({
   // baseURL: 'http://
-    baseURL: process.env.VUE_APP_BASE_API, // url = base url + request url
+    baseURL: baseURL, // url = base url + request url
     // withCredentials: true, // send cookies when cross-domain requests
     timeout: 60000 // request timeout
 })
 
+const store = MainStore()
 // request拦截器
 service.interceptors.request.use(
     config => {
         // do something before request is sent
-        if (store.getters.token) {
+        if (store.token) {
         // let each request carry token
         // ['X-Token'] is a custom headers key
         // please modify it according to the actual situation
-            config.headers['X-Token'] = getToken()
+            config.headers['Authorization'] = 'Bearer ' + store.token
         }
         return config
     },
     error => {
     // do something with request error
-    // console.log(error) // for debug
+        console.log(error) // for debug
         return Promise.reject(error)
     }
 )
