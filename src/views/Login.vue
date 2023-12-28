@@ -21,6 +21,7 @@ function handleLogin() {
       store.password = password.value
       store.userID = res.data.id
       store.balance = res.data.balance / 100
+      store.token = res.data.token
       store.isLogin = true
       router.push('/')
     }
