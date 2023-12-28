@@ -8,7 +8,6 @@ const router = useRouter();
 const siteTitle = 'Stamp Collection Store';
 const navLinks = ref([
   {text: 'Home'},
-  {text: 'Order'},
   {text: 'Me'},
 ]);
 </script>
