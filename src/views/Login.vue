@@ -28,6 +28,19 @@ function handleLogin() {
   })
 }
 
+function signUp() {
+  service.post(api.register, {
+    username: username.value,
+    password: password.value
+  }).then((res) => {
+    if (res.msg === 'OK') {
+      store.username = username.value
+      store.password = password.value
+      handleLogin()
+    }
+  })
+}
+
 </script>
 
 <template>
@@ -69,7 +82,7 @@ function handleLogin() {
         <hr class="my-6 border-gray-300 w-full">
 
         <p class="mt-8">No account yet?
-          <button type="submit" class="w-full block bg-emerald-500 hover:bg-emerald-400 focus:bg-emerald-400 text-white font-semibold rounded-lg
+          <button @click="signUp" type="submit" class="w-full block bg-emerald-500 hover:bg-emerald-400 focus:bg-emerald-400 text-white font-semibold rounded-lg
               px-4 py-3 mt-6">Sign up</button>
         </p>
 
