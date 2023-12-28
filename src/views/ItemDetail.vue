@@ -35,11 +35,13 @@ const submitCallback = () => {
 
 function purchase() {
   // TODO: 购买
+  // 没有登录，跳转到登录页面
   if (!store.isLogin) {
     router.push('/login')
     return
   }
 
+  // 余额不足，提示
   if (store.balance < stampData.value.price) {
     alert('余额不足')
     return
@@ -51,26 +53,29 @@ function purchase() {
     stampId: stampData.value.id,
     count: 1,
     password: store.password
-  }).then((res) => {
-    if (res.data.status === 'success') {
-      showModal.value = true
+  }, ).then((res) => {
+    if (res.code === 1) {
+
+      // 订单创建成功后扣除余额
+      service.put(api.deduct,{},{
+        params: {
+          id: store.userID,
+          amount: stampData.value.price * 100,
+          password: store.password
+        }
+      }).then((res) => {
+        if (res.code === 1) {
+          showModal.value = true
+          store.balance -= stampData.value.price
+        }
+      })
+
     }
   }).catch((err) => {
     console.log(err)
     alert('购买失败')
   })
 
-  // 扣除余额
-  service.put(api.deduct,{
-    id: store.userID,
-    amount: stampData.value.price * 100,
-    password: store.password
-  }).then((res) => {
-    if (res.data.status === 'success') {
-      showModal.value = true
-    }
-  })
-  showModal.value = true
 }
 
 </script>

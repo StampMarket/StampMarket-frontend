@@ -24,6 +24,7 @@ const store = MainStore()
 service.interceptors.request.use(
     config => {
         config.headers['Authorization'] = store.token
+        console.log(store.token)
         // do something before request is sent
         return config
     },
