@@ -1,7 +1,7 @@
 // define the api url
-const userURL = "http://localhost:9001/user";
-const stampURL = "http://localhost:9002/stamp";
-const orderURL = "http://localhost:9003/order";
+const userURL = "http://localhost:8222/user";
+const stampURL = "http://localhost:8222/stamp";
+const orderURL = "http://localhost:8222/order";
 
 // define the api
 const api = {
